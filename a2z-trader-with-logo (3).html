@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>A2Z Trader — AI/GPT Cloud Trading (Earn Daily up to 4%)</title>
+<meta content="A2Z Trader — community-powered quant strategies. Start from $10. Earn daily up to 4%." name="description"/>
+<style>
+    :root{
+      --bg:#0b1220; --card:#111a2e; --muted:#8fa0bf;
+      --primary:#58a6ff; --accent:#22d3ee; --success:#22c55e; --danger:#ef4444;
+      --text:#e6edf3; --border:#1f2a44; --radius:14px; --glow:0 0 30px rgba(34,211,238,.22);
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;background:radial-gradient(1200px 800px at 80% -10%, rgba(88,166,255,.18), transparent 60%), var(--bg);color:var(--text);font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";}
+    a{color:var(--accent);text-decoration:none}
+    a:hover{text-decoration:underline}
+    .container{max-width:1160px;margin:0 auto;padding:28px}
+    header{position:sticky;top:0;background:linear-gradient(180deg, rgba(11,18,32,.9), rgba(11,18,32,.65));backdrop-filter: blur(10px);z-index:50;border-bottom:1px solid var(--border)}
+    .nav{display:flex;align-items:center;justify-content:space-between;gap:16px}
+    .brand{display:flex;align-items:center;gap:12px;font-weight:700;letter-spacing:.3px}
+    .logo{width:38px;height:38px;border-radius:10px;background:linear-gradient(135deg, var(--primary), var(--accent));display:grid;place-items:center;box-shadow:var(--glow);font-weight:900}
+    .logo span{color:#0b1220}
+    .nav a.btn{padding:10px 16px;border:1px solid var(--border);border-radius:12px}
+    .cta{background:linear-gradient(135deg, var(--primary), var(--accent));color:#0b1220;padding:12px 18px;border-radius:12px;font-weight:700;box-shadow:var(--glow)}
+    .hero{display:grid;grid-template-columns: 1.05fr .95fr;align-items:center;gap:28px;padding:28px 0}
+    .hero .card{background:linear-gradient(180deg, rgba(34, 211, 238,.08), rgba(88,166,255,.05));border:1px solid var(--border);border-radius:var(--radius);padding:22px}
+    h1{font-size: clamp(32px, 5vw, 56px);line-height:1.05;margin: 6px 0 10px}
+    .sub{color:var(--muted);font-size: clamp(14px, 2.4vw, 18px)}
+    .badges{display:flex;flex-wrap:wrap;gap:10px;margin:18px 0}
+    .badge{border:1px solid var(--border);padding:6px 10px;border-radius:999px;color:var(--muted);font-size:14px;background:rgba(17,26,46,.6)}
+    .grid3{display:grid;grid-template-columns: repeat(3, 1fr);gap:18px}
+    .metric{background:var(--card);border:1px solid var(--border);padding:16px;border-radius:14px;text-align:center}
+    .metric .num{font-size:32px;font-weight:800}
+    .section{padding:40px 0}
+    .card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:22px}
+    .steps{display:grid;grid-template-columns: repeat(3,1fr);gap:18px}
+    .pill{display:inline-block;padding:6px 10px;border:1px dashed var(--border);border-radius:999px;color:var(--muted);font-size:12px;margin-bottom:6px}
+    .plan-grid{display:grid;grid-template-columns: repeat(3,1fr);gap:18px}
+    .plan{background:linear-gradient(180deg, rgba(88,166,255,.06), rgba(34,211,238,.06));border:1px solid var(--border);border-radius:var(--radius);padding:18px;display:flex;flex-direction:column;gap:8px}
+    .plan h3{margin:0}
+    .price{font-size:28px;font-weight:800}
+    .table{width:100%;border-collapse: collapse}
+    .table th,.table td{border-bottom:1px solid var(--border);padding:12px;text-align:left;color:var(--text)}
+    .table th{color:var(--muted);font-weight:600}
+    .faq{display:grid;grid-template-columns: 1fr 1fr;gap:18px}
+    details{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:14px}
+    summary{cursor:pointer;font-weight:600}
+    footer{border-top:1px solid var(--border);color:var(--muted);padding:22px 0;margin-top:30px}
+    .disclaimer{font-size:12px;color:#9fb0cf;line-height:1.6}
+    .highlight{color:var(--accent);font-weight:700}
+    .sec-title{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
+    .sec-title h2{margin:0;font-size:28px}
+    .note{font-size:13px;color:var(--muted)}
+    .ref{border-left:3px solid var(--accent);padding-left:12px}
+    .kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+    .cta-row{display:flex;gap:12px;flex-wrap:wrap;margin-top:16px}
+    .mobile{display:none}
+    @media (max-width: 980px){
+      .hero{grid-template-columns:1fr; padding:28px 0}
+      .grid3,.steps,.plan-grid,.faq,.kpis{grid-template-columns:1fr}
+      .mobile{display:inline-block}
+      .desktop{display:none}
+    }
+    .glow{box-shadow: var(--glow)}
+    .outline{border:1px dashed var(--border)}
+    .up{color: var(--success)} .down{color: var(--danger)}
+  </style>
+</head>
+<body>
+<header>
+  <div class="container nav">
+    <div class="brand">
+      <img src="a2z-logo.png" alt="A2Z Trader Logo" style="height:50px; border-radius:8px;"/>
+      <div>
+        <div>A2Z Trader</div>
+        <div style="font-size:12px;color:var(--muted)">AI-Powered Quant • GPT Cloud Trading</div>
+      </div>
+    </div>
+    <nav class="desktop">
+      <a href="#how">How it works</a>
+      <a href="#plans">Plans</a>
+      <a href="#stats">Stats</a>
+      <a href="#live">Live</a>
+      <a class="btn" href="#join">Login</a>
+      <a class="cta" href="https://t.me/a2z829">Join Telegram</a>
+    </nav>
+    <a class="cta mobile" href="https://t.me/a2z829">Join</a>
+  </div>
+</header>
+
+<main class="container">
+  <!-- Top Countdown -->
+  <section class="section" id="countdown" style="padding:18px 0">
+    <div class="card glow" style="display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap">
+      <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap">
+        <strong style="font-size:18px">New Registration Starts on 1st Oct</strong>
+        <span class="note">Countdown</span>
+        <span id="timer" style="font-weight:800"></span>
+        <span class="note" style="margin-left:10px">Max 3,000 accounts • First-come, first-served</span>
+      </div>
+      <a class="cta" href="https://t.me/a2z829">Register Now</a>
+    </div>
+  </section>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div>
+      <span class="pill">Start from $10</span> <span class="pill">AI Engine</span>
+      <h1>Earn <span class="highlight">daily up to 4%</span> with transparent, AI-first strategies.</h1>
+      <p class="sub">AI signal engine, automated strategy pools, risk controls, and real-time reporting. Withdrawals are subject to liquidity windows and program terms.</p>
+      <div class="badges">
+        <span class="badge">24×7 Support</span>
+        <span class="badge">KYC/AML Policy</span>
+        <span class="badge">GPT Risk Guard</span>
+        <span class="badge">AI Insights</span>
+      </div>
+      <div class="cta-row">
+        <a class="cta" href="https://t.me/a2z829">Get Started</a>
+        <a class="btn" href="#whitepaper">View Docs</a>
+      </div>
+    </div>
+    <div class="card glow">
+      <div class="outline" style="padding:14px;border-radius:12px;margin-bottom:12px">
+        <label>Deposit ($)</label>
+        <input id="amt" inputmode="decimal" style="width:100%;padding:10px;border-radius:10px;border:1px solid var(--border);background:rgba(17,26,46,.8);color:var(--text);margin:6px 0 10px" type="text" value="100"/>
+        <label>Days</label>
+        <input id="days" inputmode="decimal" style="width:100%;padding:10px;border-radius:10px;border:1px solid var(--border);background:rgba(17,26,46,.8);color:var(--text);margin:6px 0 10px" type="text" value="30"/>
+        <label style="display:block;margin-top:8px">Daily Rate: <span id="rateValue">2%</span></label>
+        <input id="rate" max="4" min="1" step="0.1" style="width:100%" type="range" value="2"/>
+        <button class="cta" id="calc" onclick="calcNow()" style="width:100%">Calculate</button>
+      </div>
+      <div class="grid3">
+        <div class="metric">
+          <div class="num" id="m1">$0</div>
+          <div class="lab">Projected Daily</div>
+        </div>
+        <div class="metric">
+          <div class="num" id="m2">$0</div>
+          <div class="lab">Projected Total</div>
+        </div>
+        <div class="metric">
+          <div class="num">4%</div>
+          <div class="lab">Max Daily Rate</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Transparency Stats -->
+  <section class="section" id="stats">
+    <div class="sec-title"><h2>Transparency Snapshot</h2><span class="note">AI analytics dashboards</span></div>
+    <div class="kpis">
+      <div class="metric"><div class="num" id="tvl">$3.7M</div><div class="lab">Total Value Locked</div></div>
+      <div class="metric"><div class="num" id="users">12.8k</div><div class="lab">Active Members</div></div>
+      <div class="metric"><div class="num" id="payouts">$2.1M</div><div class="lab">Payouts to Date</div></div>
+      <div class="metric"><div class="num" id="daysLive">0</div><div class="lab">Days Live</div></div>
+    </div>
+  </section>
+
+  <!-- Live Trading -->
+  <section class="section" id="live" style="padding:40px 0">
+    <div class="sec-title" style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">
+      <h2 style="margin:0;font-size:28px">Live Trading</h2>
+      <span class="note" id="feedStatus" style="font-size:13px;color:#8fa0bf">Live</span>
+    </div>
+    <div class="card" style="background:#111a2e;border:1px solid #1f2a44;border-radius:14px;padding:18px">
+      <div style="overflow:auto">
+        <table id="tradeTable" style="width:100%;border-collapse:collapse">
+          <thead>
+            <tr>
+              <th style="color:#8fa0bf;text-align:left;padding:10px;border-bottom:1px solid #1f2a44">Time</th>
+              <th style="color:#8fa0bf;text-align:left;padding:10px;border-bottom:1px solid #1f2a44">Symbol</th>
+              <th style="color:#8fa0bf;text-align:left;padding:10px;border-bottom:1px solid #1f2a44">Side</th>
+              <th style="color:#8fa0bf;text-align:left;padding:10px;border-bottom:1px solid #1f2a44">Qty</th>
+              <th style="color:#8fa0bf;text-align:left;padding:10px;border-bottom:1px solid #1f2a44">Price</th>
+              <th style="color:#8fa0bf;text-align:left;padding:10px;border-bottom:1px solid #1f2a44">P&amp;L</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- Explainer Video -->
+  <section class="section" id="explainer" style="padding:60px 0; text-align:center">
+    <div class="sec-title"><h2>Explainer Video</h2></div>
+    <div class="card" style="max-width:800px; margin:0 auto; background:#111a2e; border:1px solid #1f2a44; border-radius:14px; padding:20px">
+      <div style="position: relative; overflow: hidden; padding-top: 56.25%;">
+        <iframe 
+          src="https://share.synthesia.io/embeds/videos/649336b3-e6ab-4232-bb34-75a42218d3f3"
+          loading="lazy" title="Synthesia video player - Your AI video"
+          allowfullscreen allow="encrypted-media; fullscreen;"
+          style="position: absolute; width: 100%; height: 100%; top: 0; left: 0; border: none; padding: 0; margin: 0; overflow:hidden;">
+        </iframe>
+      </div>
+      <p style="margin-top:12px; font-size:14px; color:#8fa0bf">
+        A quick look at how A2Z uses AI &amp; GPT Cloud to power smarter automation.
+      </p>
+    </div>
+  </section>
+
+  <!-- How it works -->
+  <section class="section" id="how">
+    <div class="sec-title"><h2>How it works</h2><span class="note">3 simple steps</span></div>
+    <div class="steps">
+      <div class="card">
+        <div class="pill">Step 1</div>
+        <h3>Create &amp; Verify</h3>
+        <p>Sign up, complete KYC/AML, and connect your wallet. Minimum deposit <b>$10</b>.</p>
+      </div>
+      <div class="card">
+        <div class="pill">Step 2</div>
+        <h3>Choose a Strategy Pool</h3>
+        <p>Select from diversified pools with <b>daily yield up to 4%</b> cap. Risk and liquidity differ by pool.</p>
+      </div>
+      <div class="card">
+        <div class="pill">Step 3</div>
+        <h3>Track &amp; Withdraw</h3>
+        <p>Monitor performance in real-time and request withdrawals during windows as per terms.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Plans -->
+  <section class="section" id="plans">
+    <div class="sec-title"><h2>Plans</h2><span class="note">Transparent fees — zero hidden charges</span></div>
+    <div class="plan-grid">
+      <div class="plan">
+        <h3>Starter</h3>
+        <div class="price">$10 – $499</div>
+        <ul>
+          <li>Daily returns up to 2.0%</li>
+          <li>Weekly liquidity window</li>
+          <li>Support via Telegram</li>
+        </ul>
+        <a class="cta" href="https://t.me/a2z829">Start</a>
+      </div>
+      <div class="plan glow">
+        <h3>Pro</h3>
+        <div class="price">$500 – $4,999</div>
+        <ul>
+          <li>Daily returns up to 3.0%</li>
+          <li>Bi-weekly liquidity</li>
+          <li>Priority support</li>
+        </ul>
+        <a class="cta" href="https://t.me/a2z829">Upgrade</a>
+      </div>
+      <div class="plan">
+        <h3>Elite</h3>
+        <div class="price">$5,000+</div>
+        <ul>
+          <li>Daily returns up to 4.0%</li>
+          <li>Custom liquidity terms</li>
+          <li>Dedicated manager</li>
+        </ul>
+        <a class="cta" href="https://t.me/a2z829">Apply</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Referral -->
+  <section class="section" id="referral">
+    <div class="sec-title"><h2>Referral Program</h2><span class="note">Grow with your network</span></div>
+    <div class="card">
+      <p class="ref">Invite friends and earn a small commission from platform fees when they deposit — details in the program terms.</p>
+      <div class="cta-row">
+        <a class="cta" href="https://t.me/a2z829">Get Referral Link</a>
+        <a class="btn" href="#terms">Program Terms</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section" id="faq">
+    <div class="sec-title"><h2>FAQ</h2><span class="note">Read before you start</span></div>
+    <div class="faq">
+      <details open="">
+        <summary>Is “daily up to 4%” guaranteed?</summary>
+        <p>No. Returns are variable and may be lower or zero. The 4% figure is a cap, not a promise.</p>
+      </details>
+      <details>
+        <summary>Can I withdraw anytime?</summary>
+        <p>Withdrawals are processed during set liquidity windows and are subject to program terms and network conditions.</p>
+      </details>
+      <details>
+        <summary>Where do yields come from?</summary>
+        <p>Strategy pools combine trading, arbitrage, and market-making approaches. Full disclosures and risks are provided in the docs.</p>
+      </details>
+    </div>
+    <div class="faq-item"><h4>Why do we accept only limited accounts every time?</h4><p>Our trading bot is optimized to manage a limited pool of capital—up to $5 million. To ensure consistent returns and performance, we cap registrations and accept funds in smaller tranches.</p></div>
+  </section>
+
+  <!-- Join -->
+  <section class="section" id="join">
+    <div class="sec-title"><h2>Join the Community</h2><span class="note">Takes less than 2 minutes</span></div>
+    <div class="card">
+      <form onsubmit="event.preventDefault(); alert('Thanks! We will DM you on Telegram with onboarding steps.');">
+        <label>Telegram Username</label>
+        <input placeholder="@yourhandle" required="" style="width:100%;padding:12px;border-radius:10px;border:1px solid var(--border);background:rgba(17,26,46,.8);color:var(--text);margin:6px 0 10px"/>
+        <label>Email (optional)</label>
+        <input placeholder="you@example.com" style="width:100%;padding:12px;border-radius:10px;border:1px solid var(--border);background:rgba(17,26,46,.8);color:var(--text);margin:6px 0 10px" type="email">
+        <div class="cta-row">
+          <button class="cta" type="submit">Request Invite</button>
+          <a class="btn" href="https://t.me/a2z829" rel="noopener" target="_blank">Join Telegram</a>
+        </div>
+      </form>
+    </div>
+    <p class="disclaimer" style="margin-top:12px">This site does not offer investment advice. Returns are variable and may be zero. Always do your own research.</p>
+  </section>
+</main>
+
+<footer>
+  <div class="container">
+    <div>A2Z Trader © <span id="year"></span>. All rights reserved.</div>
+    <div style="margin-top:6px">Made by ❤️ A2Z</div>
+  </div>
+</footer>
+
+<!-- Countdown JS -->
+<script>
+(function(){
+  const el = document.getElementById('timer');
+  function tick(){
+    // Target: Oct 1 of current year (or next if already past)
+    const now = new Date();
+    let target = new Date(now.getFullYear(), 9, 1, 0,0,0); // month index 9 = October
+    if(now > target){ target = new Date(now.getFullYear()+1, 9, 1, 0,0,0); }
+    const diff = target - now;
+    if(diff <= 0){ el.textContent = 'Registration Open Now'; return; }
+    const d = Math.floor(diff / 86400000);
+    const h = Math.floor((diff % 86400000) / 3600000);
+    const m = Math.floor((diff % 3600000) / 60000);
+    const s = Math.floor((diff % 60000) / 1000);
+    el.textContent = d+'d '+h+'h '+m+'m '+s+'s';
+  }
+  tick(); setInterval(tick, 1000);
+})();
+</script>
+
+<!-- Live Trading (single script) -->
+<script>
+(function(){
+  const tbody = document.querySelector('#tradeTable tbody');
+  const symbols = ['BTCUSDT','ETHUSDT','SOLUSDT','XRPUSDT','BNBUSDT','DOGEUSDT'];
+  const sides = ['BUY','SELL'];
+  function addRow(){
+    const t = new Date();
+    const symbol = symbols[Math.floor(Math.random()*symbols.length)];
+    const side = sides[Math.floor(Math.random()*sides.length)];
+    const qty = (Math.random()*0.6 + 0.01).toFixed(3);
+    const price = (100 + Math.random()*1000).toFixed(2);
+    const pnl = (Math.random()-0.5)*20;
+    const tr = document.createElement('tr');
+    tr.innerHTML = `<td style="padding:10px;border-bottom:1px solid #1f2a44">${t.toLocaleTimeString()}</td>
+                    <td style="padding:10px;border-bottom:1px solid #1f2a44">${symbol}</td>
+                    <td style="padding:10px;border-bottom:1px solid #1f2a44">${side}</td>
+                    <td style="padding:10px;border-bottom:1px solid #1f2a44">${qty}</td>
+                    <td style="padding:10px;border-bottom:1px solid #1f2a44">$${price}</td>
+                    <td style="padding:10px;border-bottom:1px solid #1f2a44; color:${pnl>=0?'#22c55e':'#ef4444'}">${pnl>=0?'+':''}${pnl.toFixed(2)}</td>`;
+    tbody.prepend(tr);
+    while(tbody.rows.length>30){ tbody.deleteRow(tbody.rows.length-1); }
+  }
+  for(let i=0;i<6;i++) addRow();
+  setInterval(addRow, 1500);
+})();
+</script>
+
+<!-- Smooth scroll + Year -->
+<script>
+document.addEventListener('DOMContentLoaded', function(){
+  document.getElementById('year').textContent = new Date().getFullYear();
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      e.preventDefault();
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) target.scrollIntoView({ behavior: 'smooth' });
+    });
+  });
+});
+</script>
+
+<!-- Calculator -->
+<script>
+(function(){
+  function toNum(v){ var n=parseFloat(String(v).replace(/[^0-9.\-]/g,'')); return isNaN(n)?0:n; }
+  function setText(id, txt){ var el=document.getElementById(id); if(el) el.textContent = txt; }
+
+  window.calcNow = function(){
+    var amt  = toNum(document.getElementById('amt')?.value || 0);
+    var days = Math.max(1, Math.round(toNum(document.getElementById('days')?.value || 1)));
+    var rate = (parseFloat(document.getElementById('rate')?.value) || 2) / 100; // 1–4%
+    var daily = amt * rate;
+    var total = daily * days;
+    setText('m1', '$' + daily.toFixed(2));
+    setText('m2', '$' + total.toFixed(2));
+  };
+
+  document.addEventListener('DOMContentLoaded', function(){
+    var rateEl = document.getElementById('rate');
+    var rateVal = document.getElementById('rateValue');
+    if(rateEl && rateVal){
+      var sync = function(){ rateVal.textContent = (parseFloat(rateEl.value)||2).toFixed(1) + '%'; };
+      rateEl.addEventListener('input', sync); sync();
+    }
+    try{ calcNow(); }catch(e){}
+  });
+})();
+</script>
+</body>
+</html>
